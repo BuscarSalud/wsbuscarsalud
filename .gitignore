@@ -1,3 +1,8 @@
 bootstrap.path.inc
 sites/default/files
 sites/default/files/*
+.DS_Store
+buscarsalud_ws_database.inc.php
+php_error_log.txt
+requests/
+requests/*
