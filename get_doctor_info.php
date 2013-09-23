@@ -79,6 +79,7 @@ if($node->field_image){
 //Get summary
 if($node->field_perfil_extracto){
 	$summary = $node->field_perfil_extracto['und']['0']['value'];
+	$summary = mb_convert_case($summary, MB_CASE_TITLE, 'UTF-8')
 }else{
 	$summary = null;
 }
@@ -158,9 +159,9 @@ if($node->field_experiencia_profesional){
 	  	$experiencia_hasta_ano = 'Actualmente';
 	  }
 	  $periodo = $experiencia_desde_ano . '-' . $experiencia_hasta_ano;
-	  $experience[$m]['title'] = $experiencia_titulo;
-	  $experience[$m]['company'] = $experiencia_empresa;
-	  $experience[$m]['description'] = $experiencia_descripcion;
+	  $experience[$m]['title'] = mb_convert_case($experiencia_titulo, MB_CASE_TITLE, 'UTF-8');
+	  $experience[$m]['company'] = mb_convert_case($experiencia_empresa, MB_CASE_TITLE, 'UTF-8');
+	  $experience[$m]['description'] = mb_convert_case($experiencia_descripcion, MB_CASE_TITLE, 'UTF-8');
 	  $experience[$m]['period'] = $periodo;
 		$m++;
 	}
@@ -185,6 +186,7 @@ if($node->field_puntos){
 //Get Subtitle
 if($node->field_subtitle){
 	$subtite = $node->field_subtitle['und']['0']['value'];
+	$subtite = mb_convert_case($subtite, MB_CASE_TITLE, 'UTF-8')
 }else{
 	$subtite = null;
 }
