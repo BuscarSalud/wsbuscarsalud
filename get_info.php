@@ -146,13 +146,14 @@ foreach($rows as $node){
   $doctors[$alias]['titulo'] = $degree_convert_case;
   $doctors[$alias]['telefono'] = $phone_number;
   if( $address_locality == "" ){
-    $doctors[$alias]["ciudad"] = $state;
+    $doctors[$alias]["ciudad"] = mb_convert_case($state, MB_CASE_TITLE, 'UTF-8');
   }else{
-    $doctors[$alias]["ciudad"] = $address_locality . ", " . $address_state;
+    $ciudad_combinada = $address_locality . ", " . $address_state
+    $doctors[$alias]["ciudad"] = mb_convert_case($ciudad_combinada, MB_CASE_TITLE, 'UTF-8');
   }
   $doctors[$alias]['img'] = $photo_name;
-  $doctors[$alias]['calle'] = $address_street;
-  $doctors[$alias]['colonia'] = $address_colonia;
+  $doctors[$alias]['calle'] = mb_convert_case($address_street, MB_CASE_TITLE, 'UTF-8');
+  $doctors[$alias]['colonia'] = mb_convert_case($address_colonia, MB_CASE_TITLE, 'UTF-8');
   $doctors[$alias]['escuela'] = $school_convert_case;
   $doctors[$alias]['puntos'] = $points;
   $i++;
