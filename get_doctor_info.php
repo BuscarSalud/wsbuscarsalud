@@ -79,7 +79,7 @@ if($node->field_image){
 //Get summary
 if($node->field_perfil_extracto){
 	$summary = $node->field_perfil_extracto['und']['0']['value'];
-	$summary = mb_convert_case($summary, MB_CASE_TITLE, 'UTF-8')
+	$summary = mb_convert_case($summary, MB_CASE_TITLE, 'UTF-8');
 }else{
 	$summary = null;
 }
@@ -186,7 +186,7 @@ if($node->field_puntos){
 //Get Subtitle
 if($node->field_subtitle){
 	$subtite = $node->field_subtitle['und']['0']['value'];
-	$subtite = mb_convert_case($subtite, MB_CASE_TITLE, 'UTF-8')
+	$subtite = mb_convert_case($subtite, MB_CASE_TITLE, 'UTF-8');
 }else{
 	$subtite = null;
 }
