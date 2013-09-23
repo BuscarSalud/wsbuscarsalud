@@ -58,6 +58,11 @@ $field_estado = $node->field_estado['und']['0']['tid'];
 $estado_entity = entity_load('taxonomy_term', array($field_estado));
 $state = $estado_entity[$field_estado]->name;
 
+//Get the Specialty
+$field_especialidad = $node->field_especialidad['und']['0']['tid'];
+$especialidad_entity = entity_load('taxonomy_term', array($field_especialidad));
+$specialty = $especialidad_entity[$field_especialidad]->name;
+
 //Get the photo name
 if($node->field_image){
   $photo_uri = $node->field_image['und'][0]['uri'];
@@ -163,10 +168,17 @@ if($node->field_puntos){
   $points = null;
 }
 
+//Get Subtitle
+if($node->field_subtitle){
+	$subtite = $node->field_subtitle['und']['0']['value'];
+}else{
+	$subtite = null;
+}
 
 //Gather all doctor's info into an array
 $doctor["name"] = $node->title;
 $doctor["state"] = $state;
+$doctor["specialty"] = $specialty;
 $doctor["latitude"] = $latitude;
 $doctor["longitude"] = $longitude;
 $doctor["degree"] = $degree_convert_case;
@@ -189,6 +201,7 @@ $doctor["street"] = $address_street;
 $doctor["colonia"] = $address_colonia;
 $doctor["address_name"] = $address_name;
 $doctor["postal_code"] = $address_postal_code;
+$doctor["subtitle"] = $subtite;
 $doctor["summary"] = $summary;
 $doctor["school"] = $school_convert_case;
 $doctor["year"] = $year;
