@@ -166,6 +166,7 @@ if($node->field_puntos){
 
 //Gather all doctor's info into an array
 $doctor["name"] = $node->title;
+$doctor["state"] = $state;
 $doctor["latitude"] = $latitude;
 $doctor["longitude"] = $longitude;
 $doctor["degree"] = $degree_convert_case;
