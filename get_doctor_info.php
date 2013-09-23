@@ -79,16 +79,24 @@ if($node->field_perfil_extracto){
 }
 
 // Get degree, School, Year
-$field_cedula_profesional = $node->field_cedula_profesional['und']['0']['value'];
-$cedula_entity = entity_load('field_collection_item', array($field_cedula_profesional));
-$degree = $cedula_entity[$field_cedula_profesional]->field_cedula['und']['0']['value'];
-$degree_convert_case = mb_convert_case($degree, MB_CASE_TITLE, 'UTF-8');
-
-$school = $cedula_entity[$field_cedula_profesional]->field_escuela['und']['0']['value'];
-$school_convert_case = mb_convert_case($school, MB_CASE_TITLE, 'UTF-8');
-
-$year = $cedula_entity[$field_cedula_profesional]->field_year['und']['0']['value'];
-
+$cedulas = array();
+$c = 1;
+if($node->field_cedula_profesional){
+	$field_cedula_profesional_array = $node->field_cedula_profesional['und'];
+	foreach($field_cedula_profesional_array as $cedula){	
+		$field_cedula_profesional = $cedula['value'];
+		$cedula_entity = entity_load('field_collection_item', array($field_cedula_profesional));
+		$degree = $cedula_entity[$field_cedula_profesional]->field_cedula['und']['0']['value'];
+		$degree_convert_case = mb_convert_case($degree, MB_CASE_TITLE, 'UTF-8');		
+		$school = $cedula_entity[$field_cedula_profesional]->field_escuela['und']['0']['value'];
+		$school_convert_case = mb_convert_case($school, MB_CASE_TITLE, 'UTF-8');
+	  $year = $cedula_entity[$field_cedula_profesional]->field_year['und']['0']['value'];
+	  $cedulas[$c]['degree'] = $degree_convert_case;
+	  $cedulas[$c]['school'] = $school_convert_case;
+	  $cedulas[$c]['year'] = $year;
+	  $c++;
+  }
+}
 //Get Languages
 $idiomas = array();
 $m = 1;
@@ -181,7 +189,6 @@ $doctor["state"] = $state;
 $doctor["specialty"] = $specialty;
 $doctor["latitude"] = $latitude;
 $doctor["longitude"] = $longitude;
-$doctor["degree"] = $degree_convert_case;
 $doctor["phone"] = $phone_number;
 if($address_locality == $address_state){
 	$doctor["locality"] = $state;
@@ -203,10 +210,9 @@ $doctor["address_name"] = $address_name;
 $doctor["postal_code"] = $address_postal_code;
 $doctor["subtitle"] = $subtite;
 $doctor["summary"] = $summary;
-$doctor["school"] = $school_convert_case;
-$doctor["year"] = $year;
 $doctor["email"] = $email;
 $doctor["points"] = $points;
+$doctor['cedulas'] = $cedulas;
 $doctor["languages"] = $idiomas;
 $doctor["experience"] = $experience;
 
