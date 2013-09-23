@@ -148,7 +148,7 @@ foreach($rows as $node){
   if( $address_locality == "" ){
     $doctors[$alias]["ciudad"] = mb_convert_case($state, MB_CASE_TITLE, 'UTF-8');
   }else{
-    $ciudad_combinada = $address_locality . ", " . $address_state
+    $ciudad_combinada = $address_locality . ", " . $address_state;
     $doctors[$alias]["ciudad"] = mb_convert_case($ciudad_combinada, MB_CASE_TITLE, 'UTF-8');
   }
   $doctors[$alias]['img'] = $photo_name;
