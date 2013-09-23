@@ -39,11 +39,16 @@ if($node->field_telefono){
 //Get Complete address
 if($node->field_domicilio){
   $address_street = $node->field_domicilio['und'][0]['thoroughfare'];
+  $address_street = mb_convert_case($address_street, MB_CASE_TITLE, 'UTF-8');
   $address_colonia = $node->field_domicilio['und'][0]['premise'];
+  $address_colonia = mb_convert_case($address_colonia, MB_CASE_TITLE, 'UTF-8');
   $address_locality = $node->field_domicilio['und'][0]['locality'];
+  $address_locality = mb_convert_case($address_locality, MB_CASE_TITLE, 'UTF-8');
   $address_state = $node->field_domicilio['und'][0]['administrative_area']; 
+  $address_state = mb_convert_case($address_state, MB_CASE_TITLE, 'UTF-8');
   $address_postal_code = $node->field_domicilio['und'][0]['postal_code'];
   $address_name = $node->field_domicilio['und'][0]['name_line'];
+  $address_name = mb_convert_case($address_name, MB_CASE_TITLE, 'UTF-8');
   
 }else{
   $address_street = null;
