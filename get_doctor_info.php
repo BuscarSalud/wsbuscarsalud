@@ -111,7 +111,6 @@ if($node->field_idiomas){
 	$field_idiomas_array = $node->field_idiomas['und'];
 	foreach($field_idiomas_array as $idioma){
 	  $idioma_value = $idioma['value'];
-	  $idioma_value = mb_convert_case($idioma_value, MB_CASE_TITLE, 'UTF-8');
 	  $idioma_entity = entity_load('field_collection_item', array($idioma_value));
 	  $idioma = $idioma_entity[$idioma_value]->field_idioma['und'][0]['value'];
 	  $nivel = $idioma_entity[$idioma_value]->field_idioma_nivel['und'][0]['value'];
@@ -132,7 +131,7 @@ if($node->field_idiomas){
 	  		$nivel_value = 'Básico limitado';
 	  		break;
 	  } 
-	  $idiomas[$m]['name'] = $idioma;
+	  $idiomas[$m]['name'] = mb_convert_case($idioma, MB_CASE_TITLE, 'UTF-8');;
 	  $idiomas[$m]['level'] = $nivel_value;
 	  $m++;
 	}
