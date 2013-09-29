@@ -19,6 +19,7 @@ $terms = $node->body['und']['0']['safe_value'];
 //$terms = drupal_html_to_text($terms, $allowed_tags);
 //$terms = utf8_encode($terms);
 
+// x cosa
 echo $terms;
 exit;
 ?>
