@@ -119,6 +119,8 @@ if($node->field_domicilio){
 	$direccion_estado_ciudad = $direccion_ciudad . ", " . $direccion_estado;
 }
 
+$pregunta = $node->field_acordeon['und']['0']['value'];
+$preguntas_frecuentes = entity_load('field_collection_item', array($pregunta));
 
 //$cedula = $field_cedula_profesional['6']->field_cedula['und']['0']['value'];
 //echo $cedula;
@@ -134,7 +136,7 @@ $taxonomy = entity_load('taxonomy_term', array(16));
 //$term =  buscarsalud_get_especialidad_by_url_safe('cirugia');
 //$term = buscarsalud_get_especialidad_by_tid('105');
 //$term = buscarsalud_get_estados();
-$term = buscarsalud_get_especialidades();
+//--> $term = buscarsalud_get_especialidades();
 //$term = buscarsalud_get_estados(null, true);
 //$term = buscarsalud_get_especialidades(3, true);
 
@@ -148,7 +150,9 @@ print "<pre>" . print_r($field_cedula_profesional, true) . "</pre>";
 
 echo "Carrera: " . $degree . "\n";
 
-print "<pre>" . print_r($term, true) . "</pre>";
+print "Pregunta frecuente: <pre>" . print_r($preguntas_frecuentes, true) . "</pre>";
+//print "<pre>" . print_r($taxonomy, true) . "</pre>";
+//print "<pre>" . print_r($term, true) . "</pre>";
 
 exit;
 ?>
