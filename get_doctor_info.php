@@ -207,8 +207,17 @@ function load_doc_info($nid_passed, $doctor){
 	  if( $address_locality == '' ){
 	  	$doctor["locality"] = $state;
 	  }else{
-	    if($address_state == 'Coahuila de Zaragoza'){
+	    if($address_state == 'Coahuila De Zaragoza'){
 	      $address_state = 'Coahuila';
+	    }
+	    if($address_state == 'Michoacán de Ocampo'){
+	      $address_state = 'Michoacán';
+	    }
+	    if($address_state == 'Veracruz de Ignacio de la Llave'){
+	      $address_state = 'Veracruz';
+	    }
+	    if($address_state == 'Baja California Sur'){
+	      $address_state = 'Baja California S.';
 	    }
 	  	$doctor["locality"] = $address_locality . ", " . $address_state;
 	  }
