@@ -57,7 +57,7 @@ function load_doc_info($nid_passed, $doctor){
 	}else{
 	  $address_street = null;
 	  $address_colonia = null;
-	  $address_locality = null;
+	  $address_locality = NULL;
 	  $address_state = null;
 	  $address_name = null;
 	}
@@ -213,13 +213,12 @@ function load_doc_info($nid_passed, $doctor){
   if($address_state == 'Baja California Sur'){
     $address_state = 'Baja California S.';
   }
-  
-	if($address_locality == $address_state){
-		$doctor["locality"] = $address_locality;
-	}else{
-	  if( $address_locality == '' ){
+  if( $address_locality == '' || is_null($address_locality)){
 	  	$doctor["locality"] = $state;
-	  }else{	    
+	}else{
+		if($address_locality == $address_state){
+			$doctor["locality"] = $address_locality;
+		}else{
 	  	$doctor["locality"] = $address_locality . ", " . $address_state;
 	  }
 	}
