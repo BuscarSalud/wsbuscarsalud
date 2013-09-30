@@ -207,14 +207,15 @@ function load_doc_info($nid_passed, $doctor){
   if($address_state == 'Michoacán de Ocampo'){
     $address_state = 'Michoacán';
   }
-  if($address_state == 'Veracruz de Ignacio de la Llave'){
+  if($address_state == 'Veracruz De Ignacio De La Llave'){
     $address_state = 'Veracruz';
   }
   if($address_state == 'Baja California Sur'){
     $address_state = 'Baja California S.';
   }
+  
 	if($address_locality == $address_state){
-		$doctor["locality"] = $state;
+		$doctor["locality"] = $address_locality;
 	}else{
 	  if( $address_locality == '' ){
 	  	$doctor["locality"] = $address_state;
