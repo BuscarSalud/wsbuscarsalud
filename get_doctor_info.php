@@ -217,7 +217,7 @@ function load_doc_info($nid_passed, $doctor){
 		$doctor["locality"] = $state;
 	}else{
 	  if( $address_locality == '' ){
-	  	$doctor["locality"] = $state;
+	  	$doctor["locality"] = $address_state;
 	  }else{	    
 	  	$doctor["locality"] = $address_locality . ", " . $address_state;
 	  }
