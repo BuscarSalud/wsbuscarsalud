@@ -211,7 +211,7 @@ function load_doc_info($nid_passed, $doctor){
     $address_state = 'Veracruz';
   }
   if($address_state == 'Baja California Sur'){
-    $address_state = 'Baja California S.';
+    $address_state = 'B. Calif. S.';
   }
   
 	if($address_locality == $address_state){
