@@ -201,24 +201,24 @@ function load_doc_info($nid_passed, $doctor){
 	$doctor["latitude"] = $latitude;
 	$doctor["longitude"] = $longitude;
 	$doctor["phone"] = $phone_number;
+	if($address_state == 'Coahuila De Zaragoza'){
+    $address_state = 'Coahuila';
+  }
+  if($address_state == 'Michoacán de Ocampo'){
+    $address_state = 'Michoacán';
+  }
+  if($address_state == 'Veracruz de Ignacio de la Llave'){
+    $address_state = 'Veracruz';
+  }
+  if($address_state == 'Baja California Sur'){
+    $address_state = 'Baja California S.';
+  }
 	if($address_locality == $address_state){
 		$doctor["locality"] = $state;
 	}else{
 	  if( $address_locality == '' ){
 	  	$doctor["locality"] = $state;
-	  }else{
-	    if($address_state == 'Coahuila De Zaragoza'){
-	      $address_state = 'Coahuila';
-	    }
-	    if($address_state == 'Michoacán de Ocampo'){
-	      $address_state = 'Michoacán';
-	    }
-	    if($address_state == 'Veracruz de Ignacio de la Llave'){
-	      $address_state = 'Veracruz';
-	    }
-	    if($address_state == 'Baja California Sur'){
-	      $address_state = 'Baja California S.';
-	    }
+	  }else{	    
 	  	$doctor["locality"] = $address_locality . ", " . $address_state;
 	  }
 	}
