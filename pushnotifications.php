@@ -5,6 +5,7 @@ if($_POST['message']){
 	$deviceToken = '7af64e1c ef852cf7 0d931e27 af240c95 ab178f3f 07949cd9 eaf66e0b cf355371';
 	
 	$alertBody = stripslashes($_POST['message']);
+	$badge = 1;
 	
 	$apnsHost = 'gateway.sandbox.push.apple.com';
 	$apnsPort = 2195;
