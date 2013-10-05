@@ -6,14 +6,9 @@ if($_POST['message']){
 	
 	$message = stripslashes($_POST['message']);
 	
-	$payload = '{
-								"aps" : 
-								
-									{ "alert" : "'.$message.'",									
-										"badge" : 1,
-										"sound" : "bingbong.aiff"
-									}
-							}';
+	$payload['aps'] = array('alert' => $alertBody, 'badge' => $badge, 'sound' => 'default');
+  $payload = json_encode($payload);
+        
 	$ctx = stream_context_create();
 	stream_context_set_option($ctx, 'ssl', 'local_cert', 'ck.pem');
 	stream_context_set_option($ctx, 'ssl', 'passphrase', 'buscarsalud');
