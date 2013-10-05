@@ -16,7 +16,7 @@ if($_POST['message']){
 							}';
 	$ctx = stream_context_create();
 	stream_context_set_option($ctx, 'ssl', 'local_cert', 'ck.pem');
-	stream_context_set_option($ctx, 'ssl', 'passphrase', 'no_pass_phrase_yet');
+	stream_context_set_option($ctx, 'ssl', 'passphrase', 'buscarsalud');
 	$fp = stream_socket_client('ssl://gateway.sandbox.push.apple.com:2195', $err, $errstr, 60, STREAM_CLIENT_CONNECT, $ctx);
 	if(!$fp){
 		print "Failed to connect $err $errstr";
