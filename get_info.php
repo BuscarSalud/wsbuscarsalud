@@ -7,6 +7,27 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
+/**
+ * Returns an array of profiles.
+ * @param ARRAY $params An array with the following optional index:
+ *   $params = array(
+ *     'filters' => array(
+ *       'reclamados' => true, 
+ *     ), 
+ *     'sorting_items' => array( // Use any of the following and only valid sorting options
+ *       'distancia', // To sort by distance ASC, this sorting option requires to provide location parameter.
+ *       'puntos', // To sort by puntos DESC
+ *       'nombre', // To sort by name ASC 
+ *     ), 
+ *     'location' => array( // Provide this field with your location to use distance sorting option.
+ *       'latitude' => 123123.12, // Latitude of the location
+ *       'longitude' => -12323.23, // Longitude of the location
+ *     ), 
+ *     'base_url' => 'http://www.buscarsalud.com', 
+ *     'limit' => 20, // The ammount of items to return.
+ *     'page' => 1, // Page for skiping ammounts of items defined by the limit parameter.
+ *   );
+ */
 
 $seconds = time();
 
@@ -52,6 +73,11 @@ if( isset($_GET['orden']) ){
       $params['sorting_items'][] = 'puntos';
       $params['sorting_items'][] = 'nombre';
   }
+}
+
+if(isset($_GET['page'])){
+	$page = intval($_GET['page']);
+	$params['filters']['page'] = $page;
 }
 
 //$params['sorting_items'][] = 'nombre';
