@@ -75,11 +75,15 @@ if( isset($_GET['orden']) ){
   }
 }
 
-if(isset($_GET['page'])){
-	$page = intval($_GET['page']);
-	$params['filters']['page'] = $page;
+if(isset($_GET['pagina'])){
+	$page = intval($_GET['pagina']);
+	$params['page'] = $page;
 }
 
+if(isset($_GET['limite'])){
+	$limit = intval($_GET['limite']);
+	$params['limit'] = $limit;
+}
 //$params['sorting_items'][] = 'nombre';
 //print_r($params);
 
@@ -196,6 +200,8 @@ foreach($results as $k => $value){
 //print "<pre>" . print_r($results, true) . "</pre>";
 
 // Send the package with all doctors and their individual info
+//print "<pre>" . print_r($params, true) . "</pre>";
+
 print json_encode($doctors);
 $seconds = time() - $seconds;
 
