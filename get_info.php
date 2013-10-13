@@ -87,6 +87,30 @@ if(isset($_GET['limite'])){
 //$params['sorting_items'][] = 'nombre';
 //print_r($params);
 
+  if(isset($_GET['pagina'])){
+    switch($page){
+	    case 2:
+	      $i = 10;
+	      break;
+	    case 3:
+	      $i = 20; 
+	      break;
+	    case 4:
+	      $i = 30; 
+	      break;
+	    case 5:
+	      $i = 40;
+	      break;
+	    case 6: 
+	      $i = 50; 
+	      break;
+	    case 7: 
+	      $i = 60;
+	      break;
+    }
+	}else{
+		$i = 0;
+	}
 
 
 
@@ -98,8 +122,6 @@ buscarsalud_data_prepare_profiles($results, 'http://www.buscarsalud.com');
 foreach( $results as $doc ){
   $rows[] = node_load($doc['nid']);
 }
-
-$i = 0;
 
 //Go through each doctor and create the array with individual info
 foreach($rows as $node){    
@@ -168,6 +190,7 @@ foreach($rows as $node){
   
   //Create the package to send
 
+	
   $alias = "doctor" . $i ;
   $doctors[$alias]['nid'] = $node->nid;
   $doctors[$alias]['nombre'] = $node->title;
