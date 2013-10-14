@@ -88,26 +88,7 @@ if(isset($_GET['limite'])){
 //print_r($params);
 
   if(isset($_GET['pagina'])){
-    switch($page){
-	    case 2:
-	      $i = 10;
-	      break;
-	    case 3:
-	      $i = 20; 
-	      break;
-	    case 4:
-	      $i = 30; 
-	      break;
-	    case 5:
-	      $i = 40;
-	      break;
-	    case 6: 
-	      $i = 50; 
-	      break;
-	    case 7: 
-	      $i = 60;
-	      break;
-    }
+    $i = ($page * 10) - 10;
 	}else{
 		$i = 0;
 	}
