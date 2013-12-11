@@ -1,43 +1,19 @@
 <?php
 
+
+
 if($_POST['message']){
 	
-	$deviceToken = '7af64e1c ef852cf7 0d931e27 af240c95 ab178f3f 07949cd9 eaf66e0b cf355371';
+	$alertBody = $_POST['message'];
+	$deviceToken = '706c3cac 3f3c9001 82bff01c c1f2cde2 5d0ac389 370161ea f047f817 dcc9abfe'; //Cristian
+	//$deviceToken = 'a6283212 de48052f d72f4f04 1c84ff0e cccea7fb 6d5b695c 418e1885 c7098357'; //Marcos
+	//$deviceToken = '7af64e1c ef852cf7 0d931e27 af240c95 ab178f3f 07949cd9 eaf66e0b cf355371'; //Felix
 	
-	$alertBody = stripslashes($_POST['message']);
-	$badge = 1;
-	
-	$apnsHost = 'gateway.sandbox.push.apple.com';
-	$apnsPort = 2195;
-	$apnsCert = 'ck.pem';
-
-	$streamContext = stream_context_create();
-	stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
-
-	$apns = stream_socket_client('ssl://' . $apnsHost . ':' . $apnsPort, $error, $errorString, 2, STREAM_CLIENT_CONNECT, $streamContext);
-	
-	
-	
-	$payload['aps'] = array('alert' => $alertBody, 'badge' => $badge, 'sound' => 'default');
+	$payload['aps'] = array('alert' => $alertBody, 'badge' => 1, 'sound' => 'default');
+	$payload['i'] = "otro";
   $payload = json_encode($payload);
-        
-  
-  if ($apns)
-        {
-          $apnsMessage = chr(0) . chr(0) . chr(32) . pack('H*', str_replace(' ', '', $deviceToken)) . chr(0) . chr(strlen($payload)) . $payload;
-          $is = fwrite($apns, $apnsMessage);
-
-          echo "sent: $deviceToken<br />";
-        }
-        else
-        {
-          echo "Fehler!";
-          var_dump($error);
-          var_dump($errorString);
-        }
-	}
 	
-	/*$ctx = stream_context_create();
+	$ctx = stream_context_create();
 	stream_context_set_option($ctx, 'ssl', 'local_cert', 'ck.pem');
 	stream_context_set_option($ctx, 'ssl', 'passphrase', 'buscarsalud');
 	$fp = stream_socket_client('ssl://gateway.sandbox.push.apple.com:2195', $err, $errstr, 60, STREAM_CLIENT_CONNECT, $ctx);
@@ -55,16 +31,10 @@ if($_POST['message']){
 		$msg = chr(0) . pack("n",32) . pack('H*', str_replace(' ', '', $deviceToken)) . pack("n",strlen($payload)) . $payload;
 		print "sending message :" . $payload . "n";
 		fwrite($fp, $msg);
-	}*/
-	
-	
-	
-	
-	
-	fclose($fp);
-							
-	
+	}
 }
+// Close the connection to the server
+fclose($fp);
 ?>
 
 <form action="pushnotifications.php" method="post">
