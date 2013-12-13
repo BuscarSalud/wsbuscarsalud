@@ -7,7 +7,7 @@ $output = array();
 $uuid_after_clean = preg_replace("/[^a-z0-9\-]/i", "", $uuid);
 $uuid_length = strlen(utf8_decode($uuid_after_clean));
 
-if($uuid_length == 44)
+if($uuid_length == 43)
 {
   $uuid_validated = $uuid_after_clean;
   $output['status'] = 1;
