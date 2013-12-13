@@ -7,3 +7,4 @@ php_error_log.txt
 requests/
 requests/*
 pushnotifications.php
+ck.pem
