@@ -8,7 +8,17 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
 if( isset($_GET['palabras']) ){
-	//$params['palabras'] = $_GET['palabras'];
+	$params['palabras'] = $_GET['palabras'];
+}
+
+if(isset($_GET['pagina'])){
+	$page = intval($_GET['pagina']);
+	$params['page'] = $page;
+}
+
+if(isset($_GET['limite'])){
+	$limit = intval($_GET['limite']);
+	$params['limit'] = $limit;
 }
 
 $params['limit'] = 10;
@@ -17,7 +27,7 @@ $params['page'] = 1;
 $results = buscarsalud_data_get_profiles($params);
 buscarsalud_data_prepare_profiles($results, 'http://www.buscarsalud.com');
 
-//echo json_encode($results);
+echo json_encode($results);
 //print_r($params);
 exit;
 
