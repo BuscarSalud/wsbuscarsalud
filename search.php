@@ -8,12 +8,12 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
 if( isset($_GET['palabras']) ){
-	$params['palabras'] = $_GET['palabras'];
+  $params['palabras'] = $_GET['palabras'];
 }
 
 if(isset($_GET['pagina'])){
-	$page = intval($_GET['pagina']);
-	$params['page'] = $page;
+  $page = intval($_GET['pagina']);
+  $params['page'] = $page;
 }
 
 if(isset($_GET['limite'])){
