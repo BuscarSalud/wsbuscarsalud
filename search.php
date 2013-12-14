@@ -21,9 +21,6 @@ if(isset($_GET['limite'])){
 	$params['limit'] = $limit;
 }
 
-$params['limit'] = 10;
-$params['page'] = 1;
-
 $results = buscarsalud_data_get_profiles($params);
 buscarsalud_data_prepare_profiles($results, 'http://www.buscarsalud.com');
 
