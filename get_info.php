@@ -112,7 +112,7 @@ foreach( $response as $doctor ){
     $doctors[$alias]['colonia'] = $doctor['colonia'];
     $doctors[$alias]['escuela'] = $doctor['escuela'];
     $doctors[$alias]['puntos'] = $doctor['puntos'];
-    $doctors[$alias]['extracto'] = $doctor['extracto'];
+    //$doctors[$alias]['extracto'] = $doctor['extracto'];
     $i++;
   }  
 
