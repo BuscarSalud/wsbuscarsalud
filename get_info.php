@@ -95,11 +95,12 @@ if(isset($_GET['limite'])){
 
 
 
-$results = buscarsalud_data_get_profiles($params);
-buscarsalud_data_prepare_profiles($results, 'http://www.buscarsalud.com');
+$response = buscarsalud_data_get_profiles($params);
+buscarsalud_data_prepare_profiles($response, 'http://www.buscarsalud.com');
 
 //$results = buscarsalud_ws_get_profiles($params);
 
+/*
 foreach( $results as $doc ){
   $rows[] = node_load($doc['nid']);
 }
@@ -110,7 +111,7 @@ foreach($rows as $node){
   if($node->field_mapa){
     /*$lonlat = $node->field_mapa['und'][0]['wkt'];
     $string = substr($lonlat, 7, -1);
-    list($longitude,$latitude) = explode(" ", $string); */
+//    list($longitude,$latitude) = explode(" ", $string); 
     $longitude = $node->field_mapa['und'][0]['lon'];
     $latitude = $node->field_mapa['und'][0]['lat'];
   }else{
@@ -190,9 +191,27 @@ foreach($rows as $node){
   $doctors[$alias]['colonia'] = mb_convert_case($address_colonia, MB_CASE_TITLE, 'UTF-8');
   $doctors[$alias]['escuela'] = $school_convert_case;
   $doctors[$alias]['puntos'] = $points;
+  $doctors[$alias]['extracto'] = $points;
   $i++;
-}
+}*/
 
+foreach( $response as $doctor ){
+    $alias = "doctor" . $i ;
+    $doctors[$alias]['nid'] = $doctor['nid'];
+    $doctors[$alias]['nombre'] = $doctor['nombre'];
+    $doctors[$alias]['latitude'] = $doctor['latitude'];
+    $doctors[$alias]['longitude'] = $doctor['longitude'];
+    $doctors[$alias]['titulo'] = $doctor['titulo'];
+    $doctors[$alias]['telefono'] = $doctor['telefono'];
+    $doctors[$alias]['ciudad'] = $doctor['ciudad'] . ', ' . $doctor['estado'];
+    $doctors[$alias]['img'] = $doctor['img'];
+    $doctors[$alias]['calle'] = $doctor['calle'];
+    $doctors[$alias]['colonia'] = $doctor['colonia'];
+    $doctors[$alias]['escuela'] = $doctor['escuela'];
+    $doctors[$alias]['puntos'] = $doctor['puntos'];
+    $doctors[$alias]['extracto'] = $doctor['extracto'];
+    $i++;
+  }  
 /*
 $i = 0;
 foreach($results as $k => $value){
