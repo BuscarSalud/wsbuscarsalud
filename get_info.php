@@ -212,6 +212,7 @@ foreach( $response as $doctor ){
     $doctors[$alias]['extracto'] = $doctor['extracto'];
     $i++;
   }  
+  
 /*
 $i = 0;
 foreach($results as $k => $value){
